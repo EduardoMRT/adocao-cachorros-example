@@ -18,7 +18,6 @@ public class Pessoa {
     @Column(length = 15, nullable = false)
     private String telefone;
     @ManyToOne
-    @Column(nullable = false)
     private Endereco endereco;
 
     public Long getId() {

@@ -15,15 +15,12 @@ public class Historico {
     private Instant dataHora;
 
     @OneToOne
-    @Column(nullable = false)
     private Doador doador;
 
     @OneToOne
-    @Column(nullable = false)
     private Adotante adotante;
 
     @OneToOne
-    @Column(nullable = false)
     private Cachorro cachorro;
 
     public Long getId() {

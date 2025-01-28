@@ -12,7 +12,6 @@ public class Doador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    @Column(nullable = false)
     private Pessoa pessoa;
 
     public Long getId() {
