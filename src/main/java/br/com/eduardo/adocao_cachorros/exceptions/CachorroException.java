@@ -1,8 +1,15 @@
 package br.com.eduardo.adocao_cachorros.exceptions;
 
-public class CachorroException extends RuntimeException{
-    public CachorroException(String message){
-        super(message);
-    }
+import br.com.eduardo.adocao_cachorros.services.NivelExceptionEnum;
 
+public class CachorroException extends RuntimeException{
+
+    private NivelExceptionEnum nivel;
+    public CachorroException(String message, NivelExceptionEnum nivelExceptionEnum){
+        super(message);
+        this.nivel = nivelExceptionEnum;
+    }
+    public NivelExceptionEnum getNivel() {
+        return nivel;
+    }
 }

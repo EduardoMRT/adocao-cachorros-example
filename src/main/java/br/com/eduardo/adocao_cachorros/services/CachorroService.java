@@ -24,7 +24,7 @@ public class CachorroService {
     public List<Cachorro> list(){
         List<Cachorro> cachorros = cachorroRepository.findAll();
         if(cachorros.isEmpty()){
-            throw new CachorroException("A lista de cachorros está vazia");
+            throw new CachorroException("A lista de cachorros está vazia", NivelExceptionEnum.INFO);
         }
         return cachorros;
     }
@@ -32,7 +32,7 @@ public class CachorroService {
     public Doador buscaDoadorPorCachorro(Cachorro cachorro){
         return doadorRepository
                 .findById(cachorro.getDoador().getId())
-                .orElseThrow(() -> new CachorroException("Ocorreu uma falha ao tentar buscar doador por cachorro"));
+                .orElseThrow(() -> new CachorroException("Ocorreu uma falha ao tentar buscar doador por cachorro", NivelExceptionEnum.ERRO));
     }
 
     public List<Cachorro> buscaCachorroPorNome(String nome){
@@ -48,7 +48,7 @@ public class CachorroService {
     public Cachorro buscaCachorroPorId(int id){
         return cachorroRepository
                 .findById(Long.valueOf(String.valueOf(id)))
-                .orElseThrow(() -> new CachorroException("Ocorreu uma falha ao tentar buscar o cachorro por id"));
+                .orElseThrow(() -> new CachorroException("Ocorreu uma falha ao tentar buscar o cachorro por id", NivelExceptionEnum.ERRO));
     }
 
     @Transactional

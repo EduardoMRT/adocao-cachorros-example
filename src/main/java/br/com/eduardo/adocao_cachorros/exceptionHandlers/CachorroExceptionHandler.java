@@ -12,9 +12,25 @@ public class CachorroExceptionHandler {
 
     @ExceptionHandler(CachorroException.class)
     public ResponseEntity<Object> handlePessoaException(CachorroException exception){
+        HttpStatus status;
+
+        switch (exception.getNivel()) {
+            case ERRO:
+                status = HttpStatus.BAD_REQUEST; // 400
+                break;
+            case ALERTA:
+                status = HttpStatus.FORBIDDEN; // 403
+                break;
+            case INFO:
+                status = HttpStatus.OK; // 200
+                break;
+            default:
+                status = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+
         return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body("Erro: " + exception.getMessage());
+                .status(status)
+                .body(exception.getNivel().getDescricao() + ": " + exception.getMessage());
     }
 
 }
