@@ -22,8 +22,7 @@ public class PessoaService {
     }
 
     public List<Pessoa> list(){
-        List<Pessoa> pessoas = new ArrayList<>();
-        pessoas = pessoaRepository.findAll();
+        List<Pessoa> pessoas = pessoaRepository.findAll();
         if(pessoas.isEmpty()) {
             throw new PessoaException("Não há pessoas no banco de dados");
         }

@@ -18,6 +18,8 @@ public class Cachorro {
     private String cor;
     @Column(length = 40, nullable = false)
     private String motivoDoacao;
+    @OneToOne
+    private Doador doador;
 
     public Long getId() {
         return id;
@@ -65,5 +67,13 @@ public class Cachorro {
 
     public void setMotivoDoacao(String motivoDoacao) {
         this.motivoDoacao = motivoDoacao;
+    }
+
+    public Doador getDoador() {
+        return doador;
+    }
+
+    public void setDoador(Doador doador) {
+        this.doador = doador;
     }
 }
